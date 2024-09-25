@@ -1,3 +1,4 @@
+import os
 import pyautogui
 import pygetwindow as gw
 from selenium import webdriver
@@ -59,7 +60,13 @@ wait_until_nine_am()
 
 # Now that it's 9:00 AM, the script will run
 
-service = Service(executable_path="/Users/donatoprabahar/Desktop/coding_projects/pyautoguitest/chromedriver")
+current_directory = os.getcwd()
+
+# Join the directory with the chromedriver file name
+chromedriver_path = os.path.join(current_directory, "chromedriver")
+
+# Set up the Selenium driver (for Chrome) using the dynamic path
+service = Service(executable_path=chromedriver_path)
 driver = webdriver.Chrome(service=service)
 
 driver.get("https://kiosk.ca1.qless.com/kiosk/app/home/19713")
